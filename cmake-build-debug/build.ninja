@@ -56,6 +56,13 @@ build CMakeFiles/cpp_game_engine.dir/main.cpp.obj: CXX_COMPILER__cpp_game_engine
   OBJECT_DIR = CMakeFiles\cpp_game_engine.dir
   OBJECT_FILE_DIR = CMakeFiles\cpp_game_engine.dir
 
+build CMakeFiles/cpp_game_engine.dir/EngineRenderService.cpp.obj: CXX_COMPILER__cpp_game_engine_unscanned_Debug C$:/Users/Hayde/CLionProjects/cpp_game_engine/EngineRenderService.cpp || cmake_object_order_depends_target_cpp_game_engine
+  DEP_FILE = CMakeFiles\cpp_game_engine.dir\EngineRenderService.cpp.obj.d
+  FLAGS = -g -fdiagnostics-color=always
+  INCLUDES = -IC:/Users/Hayde/CLionProjects/cpp_game_engine/SDL/include
+  OBJECT_DIR = CMakeFiles\cpp_game_engine.dir
+  OBJECT_FILE_DIR = CMakeFiles\cpp_game_engine.dir
+
 
 # =============================================================================
 # Link build statements for EXECUTABLE target cpp_game_engine
@@ -64,7 +71,7 @@ build CMakeFiles/cpp_game_engine.dir/main.cpp.obj: CXX_COMPILER__cpp_game_engine
 #############################################
 # Link the executable cpp_game_engine.exe
 
-build cpp_game_engine.exe: CXX_EXECUTABLE_LINKER__cpp_game_engine_Debug CMakeFiles/cpp_game_engine.dir/main.cpp.obj
+build cpp_game_engine.exe: CXX_EXECUTABLE_LINKER__cpp_game_engine_Debug CMakeFiles/cpp_game_engine.dir/main.cpp.obj CMakeFiles/cpp_game_engine.dir/EngineRenderService.cpp.obj
   FLAGS = -g
   LINK_LIBRARIES = -lSDL2main  -lSDL2  -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   LINK_PATH = -LC:/Users/Hayde/CLionProjects/cpp_game_engine/SDL/lib/x64

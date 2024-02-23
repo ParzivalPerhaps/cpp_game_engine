@@ -12,7 +12,9 @@ set(SDL2_LIB_DIR ${CMAKE_SOURCE_DIR}/SDL/lib/x64) # If something messes up try s
 include_directories(${SDL2_INCLUDE_DIR})
 link_directories(${SDL2_LIB_DIR})
 
-add_executable(cpp_game_engine main.cpp)
+add_executable(cpp_game_engine main.cpp
+        EngineRenderService.cpp
+        EngineRenderService.h)
 
 target_link_libraries(${PROJECT_NAME} SDL2main SDL2)
 
