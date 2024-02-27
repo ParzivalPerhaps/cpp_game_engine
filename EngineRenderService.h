@@ -8,6 +8,9 @@
 #include <SDL.h>
 
 
+#include "UserInterfaceElements/UiFrame.h"
+
+
 class EngineRenderService {
     public:
 
@@ -23,19 +26,17 @@ class EngineRenderService {
             return r;
         }
 
+        auto frame = new UserInterfaceElements::UiFrame(UserInterfaceElements::CENTER_HORIZONTAL, UserInterfaceElements::CENTER_VERTICAL, 100, 100);
 
-
+        auto frame2 = new UserInterfaceElements::UiFrame(UserInterfaceElements::LEFT, UserInterfaceElements::CENTER_VERTICAL, 100, 100);
+        auto frame3 = new UserInterfaceElements::UiFrame(UserInterfaceElements::CENTER_HORIZONTAL, UserInterfaceElements::BOTTOM, 100, 100);
         SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
         SDL_SetRenderDrawColor(renderer, 255, 0, 0, 255);
 
-        auto *f_rect = new SDL_Rect(); // f_rect must be a pointer because new SDL_Rect() returns a pointer
+        SDL_RenderFillRect(renderer, frame->GetUiFrame(renderer, window));
+        SDL_RenderFillRect(renderer, frame2->GetUiFrame(renderer, window));
+        SDL_RenderFillRect(renderer, frame3->GetUiFrame(renderer, window));
 
-        f_rect->x = 0;
-        f_rect->y = 0;
-        f_rect->w = 50;
-        f_rect->h = 100;
-
-        SDL_RenderFillRect(renderer, f_rect);
         SDL_RenderDrawLine(renderer, 12, 12, 74, 2);
         SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
 
