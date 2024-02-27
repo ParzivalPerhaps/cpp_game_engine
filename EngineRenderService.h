@@ -12,14 +12,22 @@
 
 
 class EngineRenderService {
+    private:
+        SDL_Window *window_;
+        SDL_Renderer *renderer_;
     public:
 
-    static int RenderFrame(SDL_Renderer *renderer, SDL_Window *window) {
+    EngineRenderService(SDL_Window *window, SDL_Renderer *renderer) {
+        this->window_ = window;
+        this->renderer_ = renderer;
+    }
+
+    int RenderFrame(SDL_Renderer *renderer, SDL_Window *window) {
         return 1;
     }
 
-    static int RenderFrame(SDL_Renderer *renderer, SDL_Window *window, double runtime_delta_time) {
-        int r = SDL_RenderClear(renderer);
+    int RenderFrame(double runtime_delta_time) {
+        int r = SDL_RenderClear(renderer_);
 
 
         if (r != 0) {
@@ -30,17 +38,17 @@ class EngineRenderService {
 
         auto frame2 = new UserInterfaceElements::UiFrame(UserInterfaceElements::LEFT, UserInterfaceElements::CENTER_VERTICAL, 100, 100);
         auto frame3 = new UserInterfaceElements::UiFrame(UserInterfaceElements::CENTER_HORIZONTAL, UserInterfaceElements::BOTTOM, 100, 100);
-        SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
-        SDL_SetRenderDrawColor(renderer, 255, 0, 0, 255);
+        SDL_SetRenderDrawColor(renderer_, 0, 0, 0, 255);
+        SDL_SetRenderDrawColor(renderer_, 255, 0, 0, 255);
 
-        SDL_RenderFillRect(renderer, frame->GetUiFrame(renderer, window));
-        SDL_RenderFillRect(renderer, frame2->GetUiFrame(renderer, window));
-        SDL_RenderFillRect(renderer, frame3->GetUiFrame(renderer, window));
+        SDL_RenderFillRect(renderer_, frame->GetUiFrame(renderer_, window_));
+        SDL_RenderFillRect(renderer_, frame2->GetUiFrame(renderer_, window_));
+        SDL_RenderFillRect(renderer_, frame3->GetUiFrame(renderer_, window_));
 
-        SDL_RenderDrawLine(renderer, 12, 12, 74, 2);
-        SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
+        SDL_RenderDrawLine(renderer_, 12, 12, 74, 2);
+        SDL_SetRenderDrawColor(renderer_, 0, 0, 0, 255);
 
-        SDL_RenderPresent(renderer);
+        SDL_RenderPresent(renderer_);
 
         return 1;
     }

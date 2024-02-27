@@ -47,6 +47,7 @@ int main(int argc, char* argv[]) {
     bool run = true;
     double last_time_stamp = 0;
     double runtime_delta_time = 1.0; // Time in Milliseconds since last update
+    auto *render_service = new EngineRenderService(window, renderer);
 
     while (run) {
         // Pre-Render Thread
@@ -61,7 +62,7 @@ int main(int argc, char* argv[]) {
 
         // Render Thread
 
-        EngineRenderService::RenderFrame(renderer, window, runtime_delta_time);
+        render_service->RenderFrame(runtime_delta_time);
 
         // Post Render Thread
         last_time_stamp = static_cast<double> (event.syswm.timestamp);

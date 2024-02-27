@@ -53,12 +53,14 @@ namespace UserInterfaceElements {
 
                 SDL_GetWindowSize(window, &window_size_x, &window_size_y);
 
+                std::cout << window_size_x << ", " << window_size_y << std::endl;
+
                 switch (this->vertical_anchor_mode_) {
                     case  TOP:
                         display_rect->y = this->height;
                         break;
                     case CENTER_VERTICAL:
-                        display_rect->y = window_size_y / 2;
+                        display_rect->y = (window_size_y / 2) - (this->height / 2);
                         break;
                     case BOTTOM:
                         display_rect->y = window_size_y - this->height;
@@ -67,10 +69,10 @@ namespace UserInterfaceElements {
 
                 switch (this->horizontal_anchor_mode_) {
                     case LEFT:
-                        display_rect->x = this->width;
+                        display_rect->x = 0;
                         break;
                     case CENTER_HORIZONTAL:
-                        display_rect->x = (window_size_x / 2);
+                        display_rect->x = (window_size_x / 2) - (this->width / 2);
                         break;
                     case RIGHT:
                         display_rect->x = window_size_x - this->width;
