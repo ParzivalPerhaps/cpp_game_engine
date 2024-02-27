@@ -11,11 +11,11 @@
 class EngineRenderService {
     public:
 
-    static int ServeThread(SDL_Renderer *renderer, SDL_Window *window) {
+    static int RenderFrame(SDL_Renderer *renderer, SDL_Window *window) {
         return 1;
     }
 
-    static int ServeThread(SDL_Renderer *renderer, SDL_Window *window, double runtime_delta_time) {
+    static int RenderFrame(SDL_Renderer *renderer, SDL_Window *window, double runtime_delta_time) {
         int r = SDL_RenderClear(renderer);
 
 
@@ -30,8 +30,8 @@ class EngineRenderService {
 
         auto *f_rect = new SDL_Rect(); // f_rect must be a pointer because new SDL_Rect() returns a pointer
 
-        f_rect->x = 50;
-        f_rect->y = 50;
+        f_rect->x = 0;
+        f_rect->y = 0;
         f_rect->w = 50;
         f_rect->h = 100;
 
