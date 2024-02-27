@@ -61,7 +61,7 @@ int main(int argc, char* argv[]) {
 
         // Render Thread
 
-        EngineRenderService::ServeThread(renderer, window, runtime_delta_time);
+        EngineRenderService::RenderFrame(renderer, window, runtime_delta_time);
 
         // Post Render Thread
         last_time_stamp = static_cast<double> (event.syswm.timestamp);

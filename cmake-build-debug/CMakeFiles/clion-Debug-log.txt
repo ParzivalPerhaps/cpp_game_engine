@@ -1,4 +1,0 @@
-C:\Users\Hayde\AppData\Local\JetBrains\Toolbox\apps\CLion-Nova\ch-0\241.11109\bin\cmake\win\x64\bin\cmake.exe -DCMAKE_BUILD_TYPE=Debug -DCMAKE_MAKE_PROGRAM=C:/Users/Hayde/AppData/Local/JetBrains/Toolbox/apps/CLion-Nova/ch-0/241.11109/bin/ninja/win/x64/ninja.exe -G Ninja -S C:\Users\Hayde\CLionProjects\cpp_game_engine -B C:\Users\Hayde\CLionProjects\cpp_game_engine\cmake-build-debug
--- Configuring done (0.2s)
--- Generating done (0.0s)
--- Build files have been written to: C:/Users/Hayde/CLionProjects/cpp_game_engine/cmake-build-debug

@@ -18,12 +18,24 @@ class EngineRenderService {
     static int ServeThread(SDL_Renderer *renderer, SDL_Window *window, double runtime_delta_time) {
         int r = SDL_RenderClear(renderer);
 
+
         if (r != 0) {
             return r;
         }
 
+
+
         SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
         SDL_SetRenderDrawColor(renderer, 255, 0, 0, 255);
+
+        auto *f_rect = new SDL_Rect(); // f_rect must be a pointer because new SDL_Rect() returns a pointer
+
+        f_rect->x = 50;
+        f_rect->y = 50;
+        f_rect->w = 50;
+        f_rect->h = 100;
+
+        SDL_RenderFillRect(renderer, f_rect);
         SDL_RenderDrawLine(renderer, 12, 12, 74, 2);
         SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
 
