@@ -15,7 +15,9 @@ link_directories(${SDL2_LIB_DIR})
 add_executable(cpp_game_engine main.cpp
         EngineRenderService.cpp
         EngineRenderService.h
-        UserInterfaceElements)
+        UserInterfaceElements
+        UserInterfaceElements/UiElement.cpp
+        UserInterfaceElements/UiElement.h)
 
 target_link_libraries(${PROJECT_NAME} SDL2main SDL2)
 

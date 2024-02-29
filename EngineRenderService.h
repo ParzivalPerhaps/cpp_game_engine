@@ -6,9 +6,11 @@
 #ifndef ENGINERENDERSERVICE_H
 #define ENGINERENDERSERVICE_H
 #include <SDL.h>
+#include <vector>
 
 
 #include "UserInterfaceElements/UiFrame.h"
+
 
 
 class EngineRenderService {
@@ -34,16 +36,36 @@ class EngineRenderService {
             return r;
         }
 
-        auto frame = new UserInterfaceElements::UiFrame(UserInterfaceElements::CENTER_HORIZONTAL, UserInterfaceElements::CENTER_VERTICAL, 100, 100);
+        auto frame = new UserInterfaceElements::UiFrame(UserInterfaceElements::CENTER_HORIZONTAL, UserInterfaceElements::BOTTOM, 1.0, 0.15);
 
-        auto frame2 = new UserInterfaceElements::UiFrame(UserInterfaceElements::LEFT, UserInterfaceElements::CENTER_VERTICAL, 100, 100);
-        auto frame3 = new UserInterfaceElements::UiFrame(UserInterfaceElements::CENTER_HORIZONTAL, UserInterfaceElements::BOTTOM, 100, 100);
+        SDL_Color *frame_color = new SDL_Color();
+        frame_color->r = 255;
+        frame_color->b = 255;
+        frame_color->g = 255;
+        frame_color->a = 255;
+
+        frame->frame_color = *frame_color;
+
+        frame->border_width = 2;
+
+        SDL_Color *border_color = new SDL_Color();
+        border_color->r = 0;
+        border_color->g = 255;
+        border_color->b = 0;
+        border_color->a = 255;
+        frame->border_color = *border_color;
+
+        auto frame2 = new UserInterfaceElements::UiFrame(UserInterfaceElements::CENTER_HORIZONTAL, UserInterfaceElements::BOTTOM, 1.0, 0.2);
+
         SDL_SetRenderDrawColor(renderer_, 0, 0, 0, 255);
         SDL_SetRenderDrawColor(renderer_, 255, 0, 0, 255);
 
-        SDL_RenderFillRect(renderer_, frame->GetUiFrame(renderer_, window_));
-        SDL_RenderFillRect(renderer_, frame2->GetUiFrame(renderer_, window_));
-        SDL_RenderFillRect(renderer_, frame3->GetUiFrame(renderer_, window_));
+        std::array<UserInterfaceElements::RenderOrder, 5> frame_orders = frame->GetUiFrame(renderer_, window_);
+
+        for (UserInterfaceElements::RenderOrder render_order : frame_orders) {
+            SDL_SetRenderDrawColor(renderer_, render_order.color_.r, render_order.color_.g, render_order.color_.b, render_order.color_.a);
+            SDL_RenderFillRect(renderer_, render_order.rect_);
+        }
 
         SDL_RenderDrawLine(renderer_, 12, 12, 74, 2);
         SDL_SetRenderDrawColor(renderer_, 0, 0, 0, 255);
