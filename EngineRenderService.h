@@ -60,7 +60,7 @@ class EngineRenderService {
         SDL_SetRenderDrawColor(renderer_, 0, 0, 0, 255);
         SDL_SetRenderDrawColor(renderer_, 255, 0, 0, 255);
 
-        std::array<UserInterfaceElements::RenderOrder, 5> frame_orders = frame->GetUiFrame(renderer_, window_);
+        std::vector<UserInterfaceElements::RenderOrder> frame_orders = frame->GetUiFrame(renderer_, window_);
 
         for (UserInterfaceElements::RenderOrder render_order : frame_orders) {
             SDL_SetRenderDrawColor(renderer_, render_order.color_.r, render_order.color_.g, render_order.color_.b, render_order.color_.a);

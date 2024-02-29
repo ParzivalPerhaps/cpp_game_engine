@@ -146,7 +146,7 @@ namespace UserInterfaceElements {
             this->height = height;
         }
 
-        std::array<UserInterfaceElements::RenderOrder, 5> GetUiFrame(SDL_Renderer *renderer, SDL_Window *window) {
+        std::vector<UserInterfaceElements::RenderOrder> GetUiFrame(SDL_Renderer *renderer, SDL_Window *window) {
 
             auto *display_rect = new SDL_Rect(); // Auto is a keyword that automatically infers the type for lines with the 'new' keyword
 
@@ -194,7 +194,7 @@ namespace UserInterfaceElements {
             RenderOrder *display_render_order = new RenderOrder(display_rect, frame_color);
             std::array<RenderOrder, 4> *borders = makeBorder(window, display_rect->x, display_rect->y);
 
-            std::array<RenderOrder, 5> display_orders{{*display_render_order, borders->at(0), borders->at(1), borders->at(2), borders->at(3)}};
+            std::vector<RenderOrder> display_orders{{*display_render_order, borders->at(0), borders->at(1), borders->at(2), borders->at(3)}};
 
             std::cout << "getting ui frame";
 
